@@ -25,4 +25,4 @@ For Windows:
 
 **if you want the compiled code**
 
-just download the executable code here:<br>
+just download the executable code <a href="https://github.com/jackcat1818/auto_type/blob/main/auto_type">here</a>:<br>
