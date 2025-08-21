@@ -1,8 +1,8 @@
 /CMakeCache.txt
 /CMakeFiles
 /Makefile
-/auto_type
 /auto_type.old.txt
 /cmake_install.cmake
 /test
 /test.cpp
+/.gitignore
