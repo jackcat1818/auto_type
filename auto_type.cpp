@@ -24,7 +24,7 @@ class type_handler{
             this->pw=pw;
 
             if(control_code==1) FileHandler(file);
-            if(control_code==2) SettingHandler();
+            else if(control_code==2) SettingHandler();
             
             const auto SignInPayload=cpr::Multipart{
                 {"id", id},
@@ -264,6 +264,7 @@ int main(int argc, char** argv){
     std::string file="";
     int code=argv_handle(argc, argv);
     if(code==1) file=argv[2];
+    else if(code==-1) bad_argument();
 
     std::string str[6];
     str[0]="  _____          _     _                           _          _                    ";
@@ -290,10 +291,12 @@ int main(int argc, char** argv){
 int argv_handle(int argc, char** argv){
     if(argc>1){
         std::string arg1=argv[1];
-        if(argc==2) return -1;
+        if(argc==2){
+            if(arg1=="-s") return 2;
+            else return -1;
+        }
         else if(argc==3){
             if(arg1=="-d") return 1;
-            else if(arg1=="-s") return 2;
             else return -1;
         }
     }else{
