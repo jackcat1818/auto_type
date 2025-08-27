@@ -16,9 +16,9 @@ const auto user_agent=cpr::Header{
     {"User-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15"}
 };
 
-class type_handler{
+class TypeHandler{
     public:
-        type_handler(std::string id, std::string pw, int control_code, std::string file){
+        TypeHandler(std::string id, std::string pw, int control_code, std::string file){
             this->control_code=control_code;
             this->id=id;
             this->pw=pw;
@@ -139,12 +139,12 @@ class type_handler{
                     std::cout << "[error] Invalid text: " << txt << std::endl;
                     std::exit(1);
                 }else{
-                    this->TypeHandler(debug_c, safe_c);
+                    this->TypingPageHandler(debug_c, safe_c);
                 }
             }
             return;
         }
-        void TypeHandler(int debug, int safe){
+        void TypingPageHandler(int debug, int safe){
             TypePageRes=cpr::Get(
                 cpr::Url("https://typing.fhjh.tp.edu.tw/student/typing.php?course_id="+txt+"&class_id="+class_id),
                 PHPSessionID,
@@ -189,9 +189,8 @@ class type_handler{
         void FileHandler(std::string file){
             std::ifstream reader;
             reader.open(file);
-            if(reader.fail()){
-                std::cout << "[error] file: " << file << " not found" << std::endl;
-            }
+            if(reader.fail()) std::cout << "[error] file: " << file << " not found" << std::endl;
+            if(!reader.is_open()) std::cout << "[error] file: " << file << " not found" << std::endl;
             std::string data[2];
             reader >> data[0];
             reader >> data[1];
@@ -284,7 +283,7 @@ int main(int argc, char** argv){
     std::cout << "pw: ";
     std::cin >> pw;
 
-    auto typing=type_handler(id, pw, code, file);
+    auto typing=TypeHandler(id, pw, code, file);
     return 0;
 }
 

@@ -26,3 +26,30 @@ For Windows:
 **if you want the compiled code**
 
 just download the executable code <a href="https://github.com/jackcat1818/auto_type/blob/main/auto_type">here</a>:<br>
+
+**arguments**
+
+For basic usage, use the following command
+```
+./auto_type
+```
+For the one who want to have more advance options <br>
+```
+./auto_type -d <file>
+```
+For the one who want to have a advanced options but don't <br> want to have a extra file
+```
+./auto_type -s
+```
+
+usage:
+```
+-d <file>       //file need to follow the rule
+-s              //open setting part
+```
+
+**Things wiil be update**
+
+1. maybe a api for easier use
+2. more command option
+3. easier for beginner
