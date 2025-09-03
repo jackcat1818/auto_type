@@ -14,7 +14,7 @@ then go to command line:<br>
 For Mac: 
 
 ```bash
-    cmake CMakeLists.txt & make & ./auto_type
+    cmake . & make & ./auto_type
 ```
 
 For Windows: 
