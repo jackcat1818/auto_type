@@ -25,6 +25,7 @@ class TypeHandler{
 
             if(control_code==1) FileHandler(file);
             else if(control_code==2) SettingHandler();
+            else if(control_code==3) TestModeHandler();
             
             const auto SignInPayload=cpr::Multipart{
                 {"id", id},
@@ -46,6 +47,7 @@ class TypeHandler{
         int w_cnt, cpm, time;
 
         int safe_c=1, debug_c=0;
+        int mode_c=0;
 
         std::string id, pw;
         std::string class_id, txt;
@@ -163,7 +165,7 @@ class TypeHandler{
 
             const auto payload=cpr::Multipart{
                 {"sub_rand", sub_rand},
-                {"type", 0},
+                {"type", mode_c},
                 {"course_id", txt},
                 {"n78bdbd373e111832", encrypt(time, 2411, 95477)},
                 {"n61e771d9dd8eab3c", encrypt(w_cnt, 2411, 95477)},
@@ -256,6 +258,19 @@ class TypeHandler{
             if(r1=="y") debug_c=1;
             if(r2=="y") safe_c=0;
         }
+        void TestModeHandler(){
+            std::cout << "[WARNING] you just enter the test mode" << std::endl;
+            std::cout << "[WARNING] this is NEVER TESTED before" << std::endl;
+            std::cout << "[WARNING] do you want to continue(Y/n): ";
+            char c;
+            std::cin >> c;
+            if(c=='Y'){
+                std::cout << "[output] test mode entered" << std::endl;
+                mode_c=1;
+            }else{
+                std::cout << "[output] normal mode entered" << std::endl;
+            }
+        }
 };
 
 
@@ -292,6 +307,7 @@ int argv_handle(int argc, char** argv){
         std::string arg1=argv[1];
         if(argc==2){
             if(arg1=="-s") return 2;
+            else if(arg1=="-t") return 3;
             else return -1;
         }
         else if(argc==3){
