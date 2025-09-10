@@ -298,7 +298,7 @@ int main(int argc, char** argv){
     std::cout << "pw: ";
     std::cin >> pw;
 
-    auto typing=TypeHandler(id, pw, code, file);
+    TypeHandler typing(id, pw, code, file);
     return 0;
 }
 
