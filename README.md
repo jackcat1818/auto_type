@@ -41,11 +41,16 @@ For the one who want to have a advanced options but don't <br> want to have a ex
 ```
 ./auto_type -s
 ```
+For the one who want to cheat on the typing test
+```
+./auto type -t
+```
 
 usage:
 ```
 -d <file>       //file need to follow the rule
 -s              //open setting part
+-t              //test mode NOT TESTED
 ```
 
 **Things wiil be update**
